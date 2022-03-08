@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CiberCafe</string>
+    <string name="hacerReserva">Hacer reserva</string>
+    <string name="misReservas">Mis reservas</string>
+    <string name="cerrarSesion">Cerrar sesión</string>
+    <string name="salir">Salir</string>
+    <string name="iniciarSesion">Iniciar sesión</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="usuario">Nombre usuario:</string>
+    <string name="contraseña">Contraseña:</string>
+    <string name="nombre">Nombre: </string>
+    <string name="apellidos">Apellidos: </string>
+    <string name="telefono">Teléfono: </string>
+    <string name="mail">Email: </string>
+    <string name="confirmar">Confirmar</string>
+    <string name="dia">Seleccione fecha:</string>
+    <string name="instalacion">Seleccione producto:</string>
+    <string name="borrar">Borrar cuenta</string>
+    <string name="mensajeEliminar">Desea eliminar su cuenta?</string>
+    <string name="anular">Anular reservas</string>
+    <string name="anularSeleccionadas">Anular reservas seleccionadas</string>
+    <string name="ubicacion">Ubicacion</string>
+</resources>

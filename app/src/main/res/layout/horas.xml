@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/horas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary">
+
+    <TextView
+        android:id="@+id/informacion"
+        android:layout_width="289dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8sp"
+        android:textAlignment="center"
+        android:textColor="@color/primary_text"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/hora10"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/icons"
+        android:text="10:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/informacion"
+        app:layout_constraintTop_toBottomOf="@+id/informacion" />
+
+    <Button
+        android:id="@+id/hora11"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="@color/icons"
+        android:text="11:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/hora10"
+        app:layout_constraintTop_toTopOf="@+id/hora10" />
+
+    <Button
+        android:id="@+id/hora12"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/icons"
+        android:text="12:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/hora10"
+        app:layout_constraintTop_toBottomOf="@+id/hora10" />
+
+    <Button
+        android:id="@+id/hora13"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/icons"
+        android:text="13:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/hora11"
+        app:layout_constraintTop_toTopOf="@+id/hora12" />
+
+    <Button
+        android:id="@+id/hora17"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/icons"
+        android:text="17:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/hora12"
+        app:layout_constraintTop_toBottomOf="@+id/hora12" />
+
+    <Button
+        android:id="@+id/hora18"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/icons"
+        android:text="18:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/hora13"
+        app:layout_constraintTop_toTopOf="@+id/hora17" />
+
+    <Button
+        android:id="@+id/hora19"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/icons"
+        android:text="19:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/hora17"
+        app:layout_constraintTop_toBottomOf="@+id/hora17" />
+
+    <Button
+        android:id="@+id/hora20"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/icons"
+        android:text="20:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/hora18"
+        app:layout_constraintTop_toTopOf="@+id/hora19" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="112dp"
+        android:text="@string/usuario"
+        android:textSize="18dp"
+        android:textColor="@color/primary_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/contraseña"
+        android:textSize="18dp"
+        android:textColor="@color/primary_text"
+        app:layout_constraintStart_toStartOf="@+id/entradaUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/entradaUsuario" />
+
+    <EditText
+        android:id="@+id/entradaUsuario"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:textColor="@color/primary_text"
+        android:textCursorDrawable="@null"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/entradaPassw"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_text"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:textColor="@color/primary_text"
+        android:textCursorDrawable="@null"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:onClick="comprobarInicioSesion"
+        android:text="@string/confirmar"
+        android:textSize="16sp"
+        android:backgroundTint="@color/icons"
+        app:layout_constraintStart_toStartOf="@+id/entradaPassw"
+        app:layout_constraintTop_toBottomOf="@+id/entradaPassw" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

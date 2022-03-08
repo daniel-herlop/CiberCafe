@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary">
+
+    <Button
+        android:id="@+id/iniciarSesion"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="148dp"
+        android:backgroundTint="@color/icons"
+        android:onClick="iniciarSesion"
+        android:text="@string/iniciarSesion"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/registrarse"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:onClick="registrar"
+        android:text="@string/registrarse"
+        android:backgroundTint="@color/icons"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/iniciarSesion"
+        app:layout_constraintStart_toStartOf="@+id/iniciarSesion"
+        app:layout_constraintTop_toBottomOf="@+id/iniciarSesion" />
+</androidx.constraintlayout.widget.ConstraintLayout>

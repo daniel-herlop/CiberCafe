@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "986793465597",
+    "firebase_url": "https://cibercafe-e18e0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cibercafe-e18e0",
+    "storage_bucket": "cibercafe-e18e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986793465597:android:3d853661a9a19a661a9094",
+        "android_client_info": {
+          "package_name": "com.example.cibercafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986793465597-5f01j4f7v27v9akrpfkf4hm0lqebgbvn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cibercafe",
+            "certificate_hash": "1c17127cc3edf6d23ec4f715dff6b2adeef27b6e"
+          }
+        },
+        {
+          "client_id": "986793465597-vfsng8itir49svvj1gebsrrq6rsq29on.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB964Pp4lLaTA4F10p4q7n0FVKv33oMYbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986793465597-vfsng8itir49svvj1gebsrrq6rsq29on.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
