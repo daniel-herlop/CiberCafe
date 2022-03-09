@@ -21,4 +21,7 @@
     <string name="anularSeleccionadas">Anular reservas seleccionadas</string>
     <string name="ubicacion">Ubicacion</string>
     <string name="miPerfil">Mi perfil </string>
+    <string name="anadirSaldo">Añadir Saldo </string>
+    <string name="saldoAAnadir">Saldo a añadir: </string>
+    <string name="pagar">Pagar con PayPal </string>
 </resources>

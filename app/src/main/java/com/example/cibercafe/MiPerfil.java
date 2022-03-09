@@ -134,4 +134,9 @@ public class MiPerfil extends AppCompatActivity {
             viewContraseña.setText("Contraseña: ******");
         }
     }
+
+    public void añadirSaldo(View view) {
+        Intent intentAnadir = new Intent(this, AnadirSaldo.class);
+        startActivity(intentAnadir);
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.cibercafe;
 
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;

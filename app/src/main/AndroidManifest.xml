@@ -58,10 +58,17 @@
             android:name=".MiPerfil"
             android:label="Mi perfil"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AnadirSaldo"
+            android:label="Añadir Saldo"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".AlarmReceiver"
             android:exported="true" />
+        <service
+            android:name="com.paypal.android.sdk.payments.PayPalService"
+            android:exported="false" />
     </application>
 
 </manifest>
