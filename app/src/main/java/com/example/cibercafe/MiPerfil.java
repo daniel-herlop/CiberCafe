@@ -37,12 +37,14 @@ public class MiPerfil extends AppCompatActivity {
         viewContraseña = findViewById(R.id.viewContraseña);
         viewContraseña.setText("Contraseña: ******");
 
+        //cogemos la coleccion de Usuarios
         databaseReference.child("Usuarios").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //recorremos la coleccion
                 for(DataSnapshot objetos : snapshot.getChildren()) {
                     Usuario usuario = objetos.getValue(Usuario.class);
-                    String user = SaveSharedPreference.getUserName(MiPerfil.this);
+                    //cuando encontremos nuestro usuario mostramos sus datos en los textView correspondientes
                     if (usuario.getUsuario().equals(SaveSharedPreference.getUserName(MiPerfil.this))) {
                         viewUsuario.append(" "+usuario.getUsuario());
                         contraseña = usuario.getContraseña();
@@ -70,11 +72,14 @@ public class MiPerfil extends AppCompatActivity {
         });
     }
 
+    /**
+     * Muestra un mensaje preguntando si deseamos borrar la cuenta, y en caso afirmativo la borra
+     * @param view
+     */
     public void borrarCuenta(View view) {
         //se muestra un mensaje de confirmacion para borrar la cuenta
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.AlertDialogStyle);
         alertDialog.setTitle(getResources().getString(R.string.mensajeEliminar));
-        //alertDialog.setMessage("");
         alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
         alertDialog.setCancelable(false);
         alertDialog.setPositiveButton("Sí", new DialogInterface.OnClickListener()
@@ -111,10 +116,15 @@ public class MiPerfil extends AppCompatActivity {
                     });
                 }
             });
-            alertDialog.setNegativeButton("No", null);
-            alertDialog.show();
+        //el boton de "No" no hace ninguna función al pulsarse
+        alertDialog.setNegativeButton("No", null);
+        alertDialog.show();
     }
 
+    /**
+     * Muestra o oculta el texto de la contraseña según su estado
+     * @param view
+     */
     public void mostrarContraseña(View view) {
         contraseñaVisible = !contraseñaVisible;
         if(contraseñaVisible){

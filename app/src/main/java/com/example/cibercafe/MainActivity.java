@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intentAutentificacion);
             return true;
         }
+        //nos lleva a la actividad de MiPerfil
         if (id == R.id.miPerfil) {
             Intent intentMiPerfil = new Intent(this, MiPerfil.class);
             startActivity(intentMiPerfil);
