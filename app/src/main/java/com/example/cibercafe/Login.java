@@ -41,24 +41,26 @@ public class Login extends AppCompatActivity {
 
         //TODO poner error en vez de toast
         //se comprueba que se haya escrito un nombre usuario
-        if (usuario.length() == 0){
-            Toast.makeText(this, "Debes ingresar un nombre de usuario", Toast.LENGTH_SHORT).show();
+        if (usuario.length() < 6){
+            viewUsuario.setError("Usuario no válido");
         }
         //se comprueba que se haya escrito una contraseña
-        else if (contraseña.length() == 0){
-            Toast.makeText(this, "Debes ingresar una contraseña", Toast.LENGTH_SHORT).show();
+        else if (contraseña.length() < 8){
+            viewContraseña.setError("Contraseña no válida");
         }
         else {
-            //cogemos todos los datos de nuestra coleccion Usuarios mediante el listener
+            //cogemos todos los datos de la coleccion Usuarios
             databaseReference.child("Usuarios").addValueEventListener(new ValueEventListener(){
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean usuarioEncontrado = false;
+                    //recorremos la coleccion
                     for(DataSnapshot objetos : snapshot.getChildren()){
                         Usuario u = objetos.getValue(Usuario.class);
+                        //buscamos al usuario y que las contraseñas coincidan
                         if(u.getUsuario().equals(usuario)){
                             if(u.getContraseña().equals(contraseña)){
-                                //guardamos el usuario en SharedPreference
+                                //guardamos el nombre de usuario en SharedPreference
                                 SaveSharedPreference.setUserName(Login.this, usuario);
                                 Intent replyIntent = new Intent();
                                 setResult(RESULT_OK, replyIntent);
@@ -68,6 +70,7 @@ public class Login extends AppCompatActivity {
                             }
                         }
                     }
+                    //si no encontramos al usuario mostramos un mensaje informativo
                     if(!usuarioEncontrado){
                         Toast.makeText(Login.this,"Usuario o contraseña incorrecta",Toast.LENGTH_SHORT).show();
                     }

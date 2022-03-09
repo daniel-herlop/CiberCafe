@@ -55,24 +55,29 @@ public class Horas extends AppCompatActivity implements View.OnClickListener {
             Button boton = (Button)hijo;
             String hora = boton.getText().toString();
 
+            //Cogemos la tabla Reservas
             databaseReference.child("Reservas").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     contador = 0;
+                    //recorremos la tabla para ver cuantas reservas hay en esa fecha y esa hora
                     for(DataSnapshot objetos : snapshot.getChildren()){
                         Reserva r = objetos.getValue(Reserva.class);
                         if(r.getFecha().equals(fecha) && r.getHora().equals(hora) && r.getProducto().equals(producto)){
                             contador++;
                         }
                     }
-
+                    //si estan todas las plazas ocupadas, se desuscribe el boton del escuchador y se cambia su color
                     if(contador >= numeroPlazas){
                         hijo.setBackgroundColor(getResources().getColor(R.color.primary_light));
                         ((Button) hijo).setTextColor(getResources().getColor(R.color.primary));
                         hijo.setOnClickListener(null);
                     }
+                    //si hay plazas libres se suscribe al escuchador y se vuelve a colorear
                     else{
                         hijo.setOnClickListener(Horas.this);
+                        hijo.setBackgroundColor(getResources().getColor(R.color.icons));
+                        ((Button) hijo).setTextColor(getResources().getColor(R.color.white));
                     }
 
                     try {

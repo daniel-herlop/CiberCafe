@@ -106,7 +106,7 @@ public class ConfirmarReserva extends AppCompatActivity {
             //se pone una alarma media hora antes de la reserva
             AlarmManager alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(this, AlarmReceiver.class);
-            intent.putExtra("instalacion", producto);
+            intent.putExtra("producto", producto);
             intent.putExtra("hora",hora);
 
             PendingIntent alarmIntent = PendingIntent.getBroadcast(this, Integer.parseInt(reserva.getId()), intent, PendingIntent.FLAG_UPDATE_CURRENT);

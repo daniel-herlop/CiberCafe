@@ -13,16 +13,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cibercafe.modelo.Firebase;
+import com.example.cibercafe.modelo.Reserva;
+import com.example.cibercafe.modelo.Usuario;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
 
 //TODO https://firebase.google.com/docs/database/android/read-and-write
 //TODO https://www.youtube.com/playlist?list=PL2LFsAM2rdnxv8bLBZrMtd_f3fsfgLzH7
+
 
     //TODO poner comentarios a lo ultimo
     @Override
@@ -74,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void ubicacion(View view) {
-        String uri = "geo:0,0?q=Pádel CDO Covaresa";
+        String uri = "geo:0,0?q=Unreal e-Sport Bar";
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(uri));
         intent.setPackage("com.google.android.apps.maps");
@@ -128,20 +136,31 @@ public class MainActivity extends AppCompatActivity {
                  * @param dialog
                  * @param which
                  */
-                public void onClick(DialogInterface dialog, int which)
-                {
-                    //TODO cambiar borrar cuenta
-                   /* try {
-                        //se borra nuestro usuario de la base de datos
-                        db.execSQL("DELETE FROM usuarios WHERE usuario = '" + SaveSharedPreference.getUserName(context) + "'");
-                        Toast.makeText(context, "Usuario eliminado", Toast.LENGTH_SHORT).show();
-                        SaveSharedPreference.clearUserName(context);
-                        Intent intentAutentificacion = new Intent(context, Autentificacion.class);
-                        startActivity(intentAutentificacion);
-                    }
-                    catch(SQLException ex){
-                        Toast.makeText(context, "Fallo al borrar", Toast.LENGTH_SHORT).show();
-                    }*/
+                public void onClick(DialogInterface dialog, int which) {
+                    DatabaseReference databaseReference = Firebase.getDatabase();
+                    databaseReference.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot objetos : snapshot.getChildren()) {
+                                Usuario usuario = objetos.getValue(Usuario.class);
+                                if (usuario.getUsuario().equals(SaveSharedPreference.getUserName(MainActivity.this))) {
+                                    //databaseReference.child("Usuarios").child(usuario.getUsuario()).removeValue();
+                                    Usuario usuarioABorrar = new Usuario();
+                                    usuarioABorrar.setId(usuario.getId());
+                                    databaseReference.child("Usuarios").child(usuarioABorrar.getId()).removeValue();
+                                    Toast.makeText(context, "Usuario eliminado", Toast.LENGTH_SHORT).show();
+                                    SaveSharedPreference.clearUserName(context);
+                                    Intent intentAutentificacion = new Intent(context, Autentificacion.class);
+                                    startActivity(intentAutentificacion);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             });
             alertDialog.setNegativeButton("No", null);

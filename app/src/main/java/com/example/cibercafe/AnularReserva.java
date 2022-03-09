@@ -43,11 +43,14 @@ public class AnularReserva extends AppCompatActivity {
         Button botonAnular = (Button) findViewById(R.id.botonAnular);
         botonAnular.setVisibility(View.INVISIBLE);
 
+        //cogemos la colección Reservas
         databaseReference.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //recorremos la colección
                 for(DataSnapshot objetos : snapshot.getChildren()) {
                     Reserva reserva = objetos.getValue(Reserva.class);
+                    //buscamos todas las reservas a nuestro nombre con fecha posterior a la actual
                     if(reserva.getUsuario().equals(SaveSharedPreference.getUserName(AnularReserva.this))){
                         //se coge la fecha actual del sistema y la de la reserva
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -68,15 +71,15 @@ public class AnularReserva extends AppCompatActivity {
 
                         ListView listaReservas = (ListView) findViewById(R.id.listaAnularReservas);
                         listaReservas.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-                        //Se fija el adaptador en la lista
+                        //Se fija el adaptador en la lista y se muestra
                         listaReservas.setAdapter(adaptador);
+                        //si tenemos registros en la lista se pone visible el boton de anular
                         if(lista.size() > 0) {
                             botonAnular.setVisibility(View.VISIBLE);
                         }
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -94,6 +97,7 @@ public class AnularReserva extends AppCompatActivity {
         SparseBooleanArray checked = lista.getCheckedItemPositions();
         //Se recorre el array
         for(int i=0;i<checked.size();i++) {
+            //nos quedamos con las reservas que esten seleccionadas
             if (checked.valueAt(i)) {
                 Reserva reservaSeleccionada = (Reserva) lista.getItemAtPosition(checked.keyAt(i));
                 AlarmManager alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
@@ -101,9 +105,10 @@ public class AnularReserva extends AppCompatActivity {
                 //se cancela la alarma con el id con el que la creamos(el mismo id de la reserva)
                 PendingIntent alarmIntent = PendingIntent.getBroadcast(this, Integer.parseInt(reservaSeleccionada.getId()), intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmMgr.cancel(alarmIntent);
-                Reserva r = new Reserva();
-                r.setId(reservaSeleccionada.getId());
-                databaseReference.child("Reservas").child(r.getId()).removeValue();
+                Reserva reserva = new Reserva();
+                reserva.setId(reservaSeleccionada.getId());
+                //se borra la reserva de la base de datos con el mismo Id de la reserva seleccionada
+                databaseReference.child("Reservas").child(reserva.getId()).removeValue();
             }
         }
         //Se muestra el numero de reservas que se han eliminado

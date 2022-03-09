@@ -32,11 +32,14 @@ public class MisReservas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mis_reservas);
 
+        //cogemos la colección Reservas
         databaseReference.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //recorremos la colección
                 for(DataSnapshot objetos : snapshot.getChildren()) {
                     Reserva reserva = objetos.getValue(Reserva.class);
+                    //buscamos todas las reservas a nuestro nombre con fecha posterior a la actual
                     if(reserva.getUsuario().equals(SaveSharedPreference.getUserName(MisReservas.this))){
                         //se coge la fecha actual del sistema y la de la reserva
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -59,7 +62,7 @@ public class MisReservas extends AppCompatActivity {
 
                         ListView listaReservas = (ListView) findViewById(R.id.listaReservas);
 
-                        //Se fija el adaptador en la lista
+                        //Se fija el adaptador en la lista y se muestra
                         listaReservas.setAdapter(adaptador);
                     }
                 }

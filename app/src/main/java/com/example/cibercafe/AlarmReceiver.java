@@ -15,10 +15,8 @@ import androidx.core.app.NotificationManagerCompat;
 import java.util.Random;
 
 
-//necesario declarar el receiver en el manifest
 public class AlarmReceiver extends BroadcastReceiver {
     private static String CHANNEL_ID = "1";
-    AlarmReceiver context = this;
 
     /**
      * Recive el evento de la alarma
@@ -46,12 +44,12 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent pulsacionPendingIntent = PendingIntent.getActivity(context, 0, pulsacion, 0);
 
         //se cogen los datos del intent que nos ha llamado
-        String instalacion = intent.getStringExtra("instalacion");
+        String producto = intent.getStringExtra("producto");
         String hora = intent.getStringExtra("hora");
 
-        //se selecciona un icono para la notificacion segun la instalacion que sea
+        //se selecciona un icono para la notificación según el producto que sea
         int icono = R.drawable.pcicono;
-        switch (instalacion){
+        switch (producto){
             case "Ordenador":
                 icono = R.drawable.pcicono;
                 break;
@@ -67,7 +65,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(icono)
                 .setContentTitle("Su reserva comenzara pronto")
-                .setContentText(instalacion+" "+ hora)
+                .setContentText(producto+" "+ hora)
                 //se añade la pulsacion en la notificacion
                 .setContentIntent(pulsacionPendingIntent)
                 .setAutoCancel(true);
