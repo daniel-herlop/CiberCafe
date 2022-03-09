@@ -39,7 +39,6 @@ public class Login extends AppCompatActivity {
         String usuario = viewUsuario.getText().toString();
         String contraseña = viewContraseña.getText().toString();
 
-        //TODO poner error en vez de toast
         //se comprueba que se haya escrito un nombre usuario
         if (usuario.length() < 6){
             viewUsuario.setError("Usuario no válido");

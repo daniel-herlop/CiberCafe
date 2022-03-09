@@ -54,6 +54,10 @@
             android:name=".AnularReserva"
             android:label="Anular reserva"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MiPerfil"
+            android:label="Mi perfil"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".AlarmReceiver"

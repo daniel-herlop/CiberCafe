@@ -15,9 +15,10 @@
     <string name="confirmar">Confirmar</string>
     <string name="dia">Seleccione fecha:</string>
     <string name="instalacion">Seleccione producto:</string>
-    <string name="borrar">Borrar cuenta</string>
+    <string name="borrar">Eliminar cuenta</string>
     <string name="mensajeEliminar">Desea eliminar su cuenta?</string>
     <string name="anular">Anular reservas</string>
     <string name="anularSeleccionadas">Anular reservas seleccionadas</string>
     <string name="ubicacion">Ubicacion</string>
+    <string name="miPerfil">Mi perfil </string>
 </resources>

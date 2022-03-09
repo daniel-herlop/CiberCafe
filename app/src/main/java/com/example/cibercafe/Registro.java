@@ -113,7 +113,7 @@ public class Registro extends AppCompatActivity {
 
                         //nos desuscribimos del listener para que no vuelva a entrar al metodo
                         // y salte el error al existir el usuario que acabamos de crear
-                        databaseReference.child("Usuarios").removeEventListener(this);
+                        databaseReference.child("Usuarios").removeEventListener(listener);
                         SaveSharedPreference.setUserName(Registro.this, entradaUsuario.getText().toString());
                         Intent replyIntent = new Intent();
                         setResult(RESULT_OK, replyIntent);
