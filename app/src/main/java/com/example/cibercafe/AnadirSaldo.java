@@ -69,7 +69,7 @@ public class AnadirSaldo extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         //TODO añadir el saldo al usuario
                         Firebase.anadirSaldo(Integer.parseInt(entradaSaldo.getText().toString()), AnadirSaldo.this);
-                        Toast.makeText(AnadirSaldo.this, "saldo añadido: "+ entradaSaldo.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AnadirSaldo.this, "Saldo añadido", Toast.LENGTH_LONG).show();
                     } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
                         Toast.makeText(AnadirSaldo.this, "Pago cancelado", Toast.LENGTH_LONG).show();
                     } else if (result.getResultCode() == PaymentActivity.RESULT_EXTRAS_INVALID) {
