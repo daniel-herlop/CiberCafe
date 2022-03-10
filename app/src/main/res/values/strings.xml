@@ -24,4 +24,5 @@
     <string name="anadirSaldo">Añadir Saldo </string>
     <string name="saldoAAnadir">Saldo a añadir: </string>
     <string name="pagar">Pagar con PayPal </string>
+    <string name="saldo">Saldo: </string>
 </resources>

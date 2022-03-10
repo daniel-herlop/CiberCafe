@@ -24,7 +24,7 @@ public class MiPerfil extends AppCompatActivity {
     boolean contraseñaVisible = false;
     ValueEventListener listener;
     TextView viewContraseña;
-
+    //TODO si los textos se duplican al añadir saldo, cambiar append por setText
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class MiPerfil extends AppCompatActivity {
         TextView viewNombre = findViewById(R.id.viewNombre);
         TextView viewApellidos = findViewById(R.id.viewApellidos);
         TextView viewTelefono = findViewById(R.id.viewTelefono);
+        TextView viewSaldo = findViewById(R.id.viewSaldo);
         viewContraseña = findViewById(R.id.viewContraseña);
         viewContraseña.setText("Contraseña: ******");
 
@@ -46,20 +47,21 @@ public class MiPerfil extends AppCompatActivity {
                     Usuario usuario = objetos.getValue(Usuario.class);
                     //cuando encontremos nuestro usuario mostramos sus datos en los textView correspondientes
                     if (usuario.getUsuario().equals(SaveSharedPreference.getUserName(MiPerfil.this))) {
-                        viewUsuario.append(" "+usuario.getUsuario());
+                        viewUsuario.setText("Nombre usuario: "+usuario.getUsuario());
                         contraseña = usuario.getContraseña();
-                        viewEmail.append(" "+usuario.getEmail());
+                        viewEmail.setText("Email: "+usuario.getEmail());
+                        viewSaldo.setText("Saldo: "+usuario.getSaldo() +" €");
                         if(!usuario.getNombre().equals("")){
                             viewNombre.setVisibility(View.VISIBLE);
-                            viewNombre.append(" "+usuario.getNombre());
+                            viewNombre.setText("Nombre: "+usuario.getNombre());
                         }
                         if(!usuario.getApellidos().equals("")){
                             viewApellidos.setVisibility(View.VISIBLE);
-                            viewApellidos.append(" "+usuario.getApellidos());
+                            viewApellidos.setText("Apellidos: "+usuario.getApellidos());
                         }
                         if(usuario.getTelefono() != 0){
                             viewTelefono.setVisibility(View.VISIBLE);
-                            viewTelefono.append(" "+usuario.getTelefono());
+                            viewTelefono.setText("Telefono: "+usuario.getTelefono());
                         }
                     }
                 }

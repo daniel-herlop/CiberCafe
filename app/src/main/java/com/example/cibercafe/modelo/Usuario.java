@@ -9,12 +9,13 @@ public class Usuario {
     private String apellidos;
     private int telefono;
     private String email;
+    private int saldo;
 
     public Usuario() {
 
     }
 
-    public Usuario(String id, String usuario, String contraseña, String nombre, String apellidos, int telefono, String email) {
+    public Usuario(String id, String usuario, String contraseña, String nombre, String apellidos, int telefono, String email, int saldo) {
         this.id = id;
         this.usuario = usuario;
         this.contraseña = contraseña;
@@ -22,6 +23,7 @@ public class Usuario {
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.email = email;
+        this.saldo = saldo;
     }
 
     public String getUsuario() {
@@ -78,5 +80,13 @@ public class Usuario {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
     }
 }

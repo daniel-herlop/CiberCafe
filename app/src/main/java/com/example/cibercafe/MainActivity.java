@@ -15,7 +15,6 @@ import com.example.cibercafe.modelo.Firebase;
 
 
 public class MainActivity extends AppCompatActivity {
-//TODO añadir campo saldo a clase usuario, añadir saldo en la actividad añadir saldo, quitar saldo al reservar un producto, añadir saldo al anular una reserva, poner el precio de los productos donde el numero de plazas
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -7,6 +7,18 @@
     android:background="@color/primary">
 
     <TextView
+        android:id="@+id/viewSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/saldo"
+        android:textColor="@color/primary_text"
+        android:textCursorDrawable="@null"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/viewEmail"
+        app:layout_constraintTop_toBottomOf="@+id/viewEmail" />
+
+    <TextView
         android:id="@+id/viewUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,8 +52,8 @@
         android:textColor="@color/primary_text"
         android:textSize="18dp"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/viewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/viewEmail" />
+        app:layout_constraintStart_toStartOf="@+id/viewSaldo"
+        app:layout_constraintTop_toBottomOf="@+id/viewSaldo" />
 
     <TextView
         android:id="@+id/viewApellidos"

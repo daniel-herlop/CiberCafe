@@ -27,12 +27,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class AnularReserva extends AppCompatActivity {
     DatabaseReference databaseReference = Firebase.getDatabase();
     ArrayAdapter<Reserva> adaptador;
     List<Reserva> lista = new ArrayList<Reserva>();
+    static int precio = 1, total;
+    static ValueEventListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,7 @@ public class AnularReserva extends AppCompatActivity {
      * @param v
      */
     public void anular(View v){
+        total = 0;
         ListView lista=(ListView)findViewById(R.id.listaAnularReservas);
         //Se declara un array con los elementos de lalista que están seleccionados.
         SparseBooleanArray checked = lista.getCheckedItemPositions();
@@ -99,6 +101,16 @@ public class AnularReserva extends AppCompatActivity {
             //nos quedamos con las reservas que esten seleccionadas
             if (checked.valueAt(i)) {
                 Reserva reservaSeleccionada = (Reserva) lista.getItemAtPosition(checked.keyAt(i));
+                if(reservaSeleccionada.getProducto().equals("Ordenador")){
+                    precio = 1;
+                }
+                else if(reservaSeleccionada.getProducto().equals("Ps5")){
+                    precio = 2;
+                }
+                else if(reservaSeleccionada.getProducto().equals("Nintendo Switch")){
+                    precio = 3;
+                }
+                total += precio;
                 AlarmManager alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
                 Intent intent = new Intent(this, AlarmReceiver.class);
                 //se cancela la alarma con el id con el que la creamos(el mismo id de la reserva)
@@ -112,6 +124,8 @@ public class AnularReserva extends AppCompatActivity {
         }
         //Se muestra el numero de reservas que se han eliminado
         Toast.makeText(this, "Se han eliminado "+checked.size()+" reservas", Toast.LENGTH_SHORT).show();
+        //se añade el saldo
+        Firebase.anadirSaldo(total, AnularReserva.this);
         finish();
     }
 }

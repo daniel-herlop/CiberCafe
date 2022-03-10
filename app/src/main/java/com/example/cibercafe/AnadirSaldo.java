@@ -14,6 +14,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cibercafe.modelo.Firebase;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -65,6 +66,7 @@ public class AnadirSaldo extends AppCompatActivity {
                     //Si ha sido correcto añadimos el saldo al usuario
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         //TODO añadir el saldo al usuario
+                        Firebase.anadirSaldo(Integer.parseInt(entradaSaldo.getText().toString()), AnadirSaldo.this);
                         Toast.makeText(AnadirSaldo.this, "saldo añadido: "+ entradaSaldo.getText().toString(), Toast.LENGTH_SHORT).show();
                     } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
                         Toast.makeText(AnadirSaldo.this, "Pago cancelado", Toast.LENGTH_LONG).show();

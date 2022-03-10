@@ -98,17 +98,19 @@ public class Registro extends AppCompatActivity {
                     //si el usuario y el email no existen en la base de datos los añadimos
                     else{
                         databaseReference.removeEventListener(listener);
-                        Usuario u = new Usuario();
-                        u.setId(UUID.randomUUID().toString());
-                        u.setUsuario(entradaUsuario.getText().toString());
-                        u.setContraseña(contraseña.getText().toString());
-                        u.setEmail(email.getText().toString());
-                        u.setNombre(nombre.getText().toString());
-                        u.setApellidos(apellidos.getText().toString());
+                        Usuario usuario = new Usuario();
+                        usuario.setId(UUID.randomUUID().toString());
+                        usuario.setUsuario(entradaUsuario.getText().toString());
+                        usuario.setContraseña(contraseña.getText().toString());
+                        usuario.setEmail(email.getText().toString());
+                        usuario.setNombre(nombre.getText().toString());
+                        usuario.setApellidos(apellidos.getText().toString());
+                        usuario.setSaldo(0);
+
                         if(telefono.length()>0){
-                            u.setTelefono(Integer.parseInt(telefono.getText().toString()));
+                            usuario.setTelefono(Integer.parseInt(telefono.getText().toString()));
                         }
-                        databaseReference.child("Usuarios").child(u.getId()).setValue(u);
+                        databaseReference.child("Usuarios").child(usuario.getId()).setValue(usuario);
 
                         //nos desuscribimos del listener para que no vuelva a entrar al metodo
                         // y salte el error al existir el usuario que acabamos de crear
