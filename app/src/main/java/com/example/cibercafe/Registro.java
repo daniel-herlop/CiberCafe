@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class Registro extends AppCompatActivity {
 
     DatabaseReference databaseReference = Firebase.getDatabase();
-    ValueEventListener listener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +70,7 @@ public class Registro extends AppCompatActivity {
         else{
 
             //cogemos todos los datos de la coleccion Usuarios
-            listener = databaseReference.child("Usuarios").addValueEventListener(new ValueEventListener() {
+            databaseReference.child("Usuarios").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean usuarioYaExiste = false;
@@ -97,7 +97,6 @@ public class Registro extends AppCompatActivity {
                     }
                     //si el usuario y el email no existen en la base de datos los añadimos
                     else{
-                        databaseReference.removeEventListener(listener);
                         Usuario usuario = new Usuario();
                         usuario.setId(UUID.randomUUID().toString());
                         usuario.setUsuario(entradaUsuario.getText().toString());
@@ -111,10 +110,6 @@ public class Registro extends AppCompatActivity {
                             usuario.setTelefono(Integer.parseInt(telefono.getText().toString()));
                         }
                         databaseReference.child("Usuarios").child(usuario.getId()).setValue(usuario);
-
-                        //nos desuscribimos del listener para que no vuelva a entrar al metodo
-                        // y salte el error al existir el usuario que acabamos de crear
-                        databaseReference.child("Usuarios").removeEventListener(listener);
                         SaveSharedPreference.setUserName(Registro.this, entradaUsuario.getText().toString());
                         Intent replyIntent = new Intent();
                         setResult(RESULT_OK, replyIntent);

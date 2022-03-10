@@ -33,7 +33,6 @@ public class AnularReserva extends AppCompatActivity {
     ArrayAdapter<Reserva> adaptador;
     List<Reserva> lista = new ArrayList<Reserva>();
     static int precio = 1, total;
-    static ValueEventListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

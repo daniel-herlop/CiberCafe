@@ -28,7 +28,6 @@ public class ConfirmarReserva extends AppCompatActivity {
     private static int año, mes, dia;
     private static String producto, hora, fecha;
     DatabaseReference databaseReference = Firebase.getDatabase();
-    static ValueEventListener listener;
     static  Reserva reserva;
     int contador=0;
     int numeroPlazas = 1;
@@ -88,29 +87,10 @@ public class ConfirmarReserva extends AppCompatActivity {
      * @param v
      */
     public void confirmar(View v){
-        //se vuelve a comprobar que sigue disponible el producto
-        databaseReference.child("Reservas").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                contador = 0;
-                for(DataSnapshot objetos : snapshot.getChildren()){
-                    Reserva r = objetos.getValue(Reserva.class);
-                    if(r.getFecha().equals(fecha) && r.getHora().equals(hora) && r.getProducto().equals(producto)){
-                        contador++;
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
         //si sigue disponible se añade a la base de datos
         if(contador < numeroPlazas){
             //cogemos todos los datos de la coleccion Usuarios
-            listener = databaseReference.child("Usuarios").addValueEventListener(new ValueEventListener() {
+            databaseReference.child("Usuarios").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //recorremos la coleccion
@@ -150,8 +130,6 @@ public class ConfirmarReserva extends AppCompatActivity {
                             else{
                                 Toast.makeText(ConfirmarReserva.this, "No tienes saldo suficiente", Toast.LENGTH_LONG).show();
                             }
-                            //nos desuscribimos del listener para que no haga un bucle infinito
-                            databaseReference.child("Usuarios").removeEventListener(listener);
                         }
                     }
                 }

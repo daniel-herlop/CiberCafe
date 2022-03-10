@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
         }
         else {
             //cogemos todos los datos de la coleccion Usuarios
-            databaseReference.child("Usuarios").addValueEventListener(new ValueEventListener(){
+            databaseReference.child("Usuarios").addListenerForSingleValueEvent(new ValueEventListener(){
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean usuarioEncontrado = false;

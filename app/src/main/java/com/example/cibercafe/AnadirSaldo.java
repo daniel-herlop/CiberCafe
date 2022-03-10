@@ -3,7 +3,6 @@ package com.example.cibercafe;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -41,20 +40,23 @@ public class AnadirSaldo extends AppCompatActivity {
     }
 
     public void abrirPaypal(View view) {
-        //TODO comprobar que el editText no sea nulo
-        // Getting the amount from editText
-        String saldo = entradaSaldo.getText().toString();
+        if(entradaSaldo.length() == 0){
+            entradaSaldo.setError("Cantidad no válida");
+        }
+        else{
+            String saldo = entradaSaldo.getText().toString();
 
-        // Establecemos que va a ser un pago
-        PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(saldo)), "EUR", "Course Fees",
-                PayPalPayment.PAYMENT_INTENT_SALE);
+            // Establecemos que va a ser un pago
+            PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(saldo)), "EUR", "Course Fees",
+                    PayPalPayment.PAYMENT_INTENT_SALE);
 
-        // Se crea el intent a PayPal
-        Intent intent = new Intent(this, PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+            // Se crea el intent a PayPal
+            Intent intent = new Intent(this, PaymentActivity.class);
+            intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+            intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
 
-        secondActivityResultLauncher.launch(intent);
+            secondActivityResultLauncher.launch(intent);
+        }
     }
 
     //recogemos el intent de paypal

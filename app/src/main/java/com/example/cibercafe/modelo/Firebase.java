@@ -1,11 +1,9 @@
 package com.example.cibercafe.modelo;
 
 import android.content.Context;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import com.example.cibercafe.Login;
 import com.example.cibercafe.SaveSharedPreference;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +16,6 @@ public class Firebase {
 
     static FirebaseDatabase firebaseDatabase;
     static DatabaseReference databaseReference;
-    static ValueEventListener listener;
     /**
      * Inicializa la conexion con la base de datos
      * @param context

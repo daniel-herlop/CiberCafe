@@ -22,7 +22,6 @@ public class MiPerfil extends AppCompatActivity {
     DatabaseReference databaseReference = Firebase.getDatabase();
     String contraseña;
     boolean contraseñaVisible = false;
-    ValueEventListener listener;
     TextView viewContraseña;
     //TODO si los textos se duplican al añadir saldo, cambiar append por setText
     @Override
@@ -92,7 +91,7 @@ public class MiPerfil extends AppCompatActivity {
              * @param which
              */
                 public void onClick(DialogInterface dialog, int which) {
-                    listener = databaseReference.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    databaseReference.child("Usuarios").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot objetos : snapshot.getChildren()) {
@@ -107,8 +106,6 @@ public class MiPerfil extends AppCompatActivity {
                                     startActivity(intentAutentificacion);
                                 }
                             }
-                            //nos desuscribimos del listener
-                            databaseReference.child("Usuarios").removeEventListener(listener);
                         }
 
                         @Override
