@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/listaReservas"
-        android:layout_width="350dp"
-        android:layout_height="669dp"
+        android:layout_width="353dp"
+        android:layout_height="572dp"
         android:layout_marginTop="50dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="12dp"
