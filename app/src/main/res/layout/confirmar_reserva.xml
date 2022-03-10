@@ -8,11 +8,12 @@
 
     <TextView
         android:id="@+id/datos"
-        android:layout_width="329dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="100dp"
         android:lineSpacingExtra="12sp"
+        android:textAlignment="center"
         android:textColor="@color/primary_text"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +28,7 @@
         android:onClick="confirmar"
         android:text="@string/confirmar"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/datos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datos" />
 </androidx.constraintlayout.widget.ConstraintLayout>
