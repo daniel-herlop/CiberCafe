@@ -36,7 +36,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".HacerReserva"
-            android:label="Escoge instalacion"
+            android:label="Escoge producto"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".Horas"
