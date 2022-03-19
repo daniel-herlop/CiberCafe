@@ -59,8 +59,8 @@ public class AnularReserva extends AppCompatActivity {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        //se resta una hora a la hora actual para que se muestren las reservas 1 hora mas, hasta que terminan
-                        long fechaActual = System.currentTimeMillis() - 3600000;
+                        //se coge la fecha actual del sistema
+                        long fechaActual = System.currentTimeMillis();
                         //si la fecha es mayor a la actual-1, se muestra en la lista
                         if(fechaReserva > fechaActual){
                             lista.add(reserva);
